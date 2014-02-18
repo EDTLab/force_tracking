@@ -1,0 +1,6 @@
+*.swp
+./node_modules/phidgets/build
+FT/build-tmp
+FT/code
+processing/build-tmp
+processing/code
