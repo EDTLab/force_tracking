@@ -1,6 +1,9 @@
+/** vim **/
 *.swp
-./node_modules/phidgets/build
+
+/** node/npm **/
+/node_modules
+
+/** processing **/
 FT/build-tmp
 FT/code
-processing/build-tmp
-processing/code
