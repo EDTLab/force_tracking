@@ -1,5 +1,5 @@
 {
-    "name": "FingerForceTracker",
+    "name": "ForceTracking",
     "version": "0.1.0",
     "description": "Node-Webkit application for finger load sensor reader with phidgets",
     "keywords": [
@@ -14,11 +14,10 @@
 
     "repository": {
         "type": "git",
-        "url": "https://github.com/soundlake/FingerForceTracker"
+        "url": "https://github.com/EDTLab/force_tracking"
     },
 
     "dependencies": {
-        "phidget": ">= 0.1.0"
     },
 
     "window": {
