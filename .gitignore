@@ -2,8 +2,7 @@
 *.swp
 
 /** node/npm **/
-./node/node_modules
+node/node_modules
 
 /** processing **/
 FT/build-tmp
-FT/code
