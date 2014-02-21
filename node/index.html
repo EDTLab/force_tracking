@@ -2,21 +2,26 @@
 <html>
     <head>
         <title>Finger Force Tracker</title>
-        <script src='js/jquery.min.js'></script>
+        <script src='js/lib/jquery.min.js'></script>
         <script>
 var phidget = require('phidget');
+var bridge = new phidget.bridge();
 $(document).ready(function() {
     console.log('ready!');
 });
         </script>
     </head>
     <body>
-        <h1>Finger Force Tracker</h1>
+        <h1>Force Tracking</h1>
+        <nav>
+            <button />
+        </nav>
         <form>
             <input id='connect' value='connect' type='button'>
             <input id='disconnect' value='disconnect' type='button'>
             <input id='test' value='TEST' type='button'>
         </form>
+        <footer></footer>
     </body>
     <script>
 $('#test').click(function() {
@@ -26,16 +31,20 @@ $('#test').click(function() {
 var isOpened = false;
 $('#connect').click(function() {
     if(!isOpened) {
-        phidget.open();
-        isOpened = true;
+        bridge.attach(function(err){
+            if(!err)
+                isOpened = true;
+        });
     }
     else
         console.log('Already Phidget is opened!');
 });
 $('#disconnect').click(function() {
     if(isOpened) {
-        phidget.close();
-        isOpened = false;
+        bridge.close(function(err){
+            if(!err)
+                isOpened = false;
+        });
     }
     else
         console.log('Already Phidget is closed!');
