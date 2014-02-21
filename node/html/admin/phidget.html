@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Phidget Test</title>
+        <script src='../../js/lib/jquery-1.11.0.js' charset="utf-8"></script>
+        <script>
+var phidget = require('phidget');
+var bridge = new phidget.bridge();
+$(document).ready(function() {
+    console.log('ready!');
+});
+        </script>
+    </head>
+    <body>
+        <h1>Force Tracking</h1>
+        <form>
+            <input id='connect' value='connect' type='button'>
+            <input id='disconnect' value='disconnect' type='button'>
+            <input id='test' value='TEST' type='button'>
+        </form>
+        <p id="result"></p>
+        <nav>
+            <ul>
+                <li><a href="../index.html">main</a></li>
+                <li><a href="../game/menu.html">game menu</a></li>
+                <li><a href="../game/active.html">game active</a></li>
+                <li><a href="../game/menu.html">game menu</a></li>
+                <li><a href="../test/menu.html">test menu</a></li>
+                <li><a href="../test/active.html">test active</a></li>
+                <li><a href="../test/menu.html">test menu</a></li>
+            </ul>
+        </nav>
+    </body>
+    <script>
+$('#test').click(function() {
+    console.log(bridge.ready);
+});
+
+$('#connect').click(function() {
+    if(!bridge.ready) {
+        bridge.attach(function(err) {
+            bridge.setEnabled(0, true, function(err) {
+                bridge.setGain(0, bridge.GAIN._1, function(err) {
+                    var loop = function() {
+                        if(bridge.ready)
+                            bridge.getValue(0, function(err, value) {
+                                $('#result').text(value);
+                            });
+                        setTimeout(loop, 20);
+                    };
+                    loop();
+                });
+            });
+        });
+    }
+    else
+        console.log('Already Phidget is opened!');
+});
+$('#disconnect').click(function() {
+    if(bridge.ready) {
+        bridge.close(function(err){
+            if(!err)
+                isOpened = false;
+        });
+    }
+    else
+        console.log('Already Phidget is closed!');
+});
+    </script>
+</html>
