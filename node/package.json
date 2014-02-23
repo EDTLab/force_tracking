@@ -18,12 +18,22 @@
     },
 
     "dependencies": {
-        "jade": "1.x"
     },
 
     "window": {
+        "title": "Force Tracking",
+        "icon": "",
+        
         "toolbar": false,
+        "frame": true,
+        "no-edit-menu": true,
+        
+        "position": "center",
+        "min_width": 1280,
         "width": 1280,
-        "height": 720
+        "max_width": 1280,
+        "min_height": 720,
+        "height": 720,
+        "max_height": 720
     }
 }

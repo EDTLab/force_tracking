@@ -1,0 +1,14 @@
+div[ng-view] > div {
+    margin: 0;
+    padding: 1em;
+    position: fixed;
+    top: 1.4em;
+    left: 0;
+    bottom: 0.6em;
+    right: 0;
+    background: #acf;
+}
+
+div[ng-view] > div h1 {
+    margin: inherit;
+}

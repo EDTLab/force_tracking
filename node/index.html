@@ -1,1 +1,45 @@
-<script src="js/app.js" charset="utf-8"></script>
+<!DOCTYPE html>
+<html ng-app="FT">
+    <head>
+        <meta charset="utf-8">
+        <script src="lib/angular/angular.js" charset="utf-8"></script>
+        <script src="lib/angular/angular-route.js" charset="utf-8"></script>
+        <script src="js/app.js" charset="utf-8"></script>
+        <script src="js/controllers.js" charset="utf-8"></script>
+        <link rel="stylesheet" href="css/index.css">
+        <link rel="stylesheet" href="css/body.css">
+        <title>Force Tracking {{title}}</title>
+    </head>
+    <body>
+        <header role="menubar">
+            <nav role="navigation">
+                <ul>
+                    <li><a href="#/">첫화면</a></li>
+                    <li>
+                        <ul>
+                            <li><a href="#/game/menu">게임메뉴</a></li>
+                            <li><a href="#/game/action">게임실행</a></li>
+                            <li><a href="#/game/result">게임결과</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <ul>
+                            <li><a href="#/test/menu">검사메뉴</a></li>
+                            <li><a href="#/test/action">검사실행</a></li>
+                            <li><a href="#/test/result">검사결과</a></li>
+                        </ul>
+                    </li>
+                    <!--
+                    <li><a href="#/game/menu">게임하기</a></li>
+                    <li><a href="#/test/menu">검사하기</a></li>
+                    -->
+                    <li><a href="#/config">설정</a></li>
+                </ul>
+            </nav>
+        </header>
+        <div ng-view></div>
+        <footer role="banner">
+            <p>copyright (c) 2014 EDT Labatory. All rights reserved.</p>
+        </footer>
+    </body>
+</html>
