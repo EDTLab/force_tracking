@@ -25,7 +25,7 @@ abstract class Active extends State {
   }
 
   float getInput() {
-    float input = mouseY;
+    float input = mp.getValue(RIGHT);
     if(active_x < input_data.length)
       input_data[(int)active_x] = input;
     return input;

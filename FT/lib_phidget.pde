@@ -66,6 +66,17 @@ class FTPhidget {
     }
   }
 
+  float getValue(int side) {
+    switch(side) {
+      case RIGHT:
+        return v[RIGHT];
+      case LEFT:
+        return v[LEFT];
+      default:
+        return 0;
+    }
+  }
+
   void onStop() {
     try {
       b.removeBridgeDataListener(bdl);

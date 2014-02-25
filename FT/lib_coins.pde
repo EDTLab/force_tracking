@@ -43,20 +43,28 @@ class Coins {
     int point = 0;
 
     PVector pos;
+
+    PShape bubble;
     
     ACoin(float x, float y, float r) {
       pos = new PVector(x, y);
       radius = r;
+
+      bubble = loadShape("svg/bubble.svg");
     }
 
     void display() {
       switch(state) {
         case ALIVE:
           // draw a coin
+          shapeMode(CENTER);
+          shape(bubble, pos.x, pos.y, radius * 2, radius * 2);
+          /*
           strokeWeight(1);
           stroke(0);
           fill(255, 255, 0);
           ellipse(pos.x, pos.y, radius * 2, radius * 2);
+          */
           break;
         case FADE:
           if(fade_duration == 0) {

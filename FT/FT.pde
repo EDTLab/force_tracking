@@ -4,6 +4,7 @@
 FTPhidget mp;
 States states;
 float duration = 10; // duration of each active state in second
+
 /*
  * global variables for audio
  */
@@ -21,7 +22,7 @@ void setup() {
   states = new States(width, height, duration);
 
   // for exit procedure
-//  mp = new FTPhidget();
+  mp = new FTPhidget();
 
   // for audio
   minim = new Minim(this);
@@ -54,7 +55,7 @@ private void prepareExitHandler() {
     public void run() {
       //TODO: here comes shutdown hook
       try {
-//        mp.onStop();
+        mp.onStop();
 
         audio_coin.close();
         minim.stop();

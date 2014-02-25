@@ -15,7 +15,11 @@ class Game extends Active {
   long  guide_points = 0,
         guide_points_total = 0;
 
+  // button for skip to test
   ButtonTest btnTest;
+
+  // images
+  PShape fish;
 
   Game (int w, int h, float dur, int df) {
     super(w, h, dur);
@@ -31,6 +35,9 @@ class Game extends Active {
     color dft = color(225, 102, 83);
     color hvr = color(195, 42, 23);
     btnTest = new ButtonTest(btnPos, btnSize, "Skip to Test", dft, hvr);
+
+    // image
+    fish = loadShape("svg/fish_action.svg");
   }
 
   int getDifficulty() {
@@ -55,7 +62,9 @@ class Game extends Active {
   }
 
   void display() {
-    background(0);
+    //background(0);
+    shapeMode(CORNER);
+    shape(bg, 0, 0, width, height);
 
     showTitle("Game Stage " + difficulty);
 
@@ -68,8 +77,8 @@ class Game extends Active {
     text("course : " + guide_points_total + " (+" + guide_points + ")", 50, 150);
 
     // display the character
-    fill(255, 0, 255);
-    ellipse(active_x, mouseY, radius * 2, radius * 2);
+    shapeMode(CENTER);
+    shape(fish, active_x, getInput(), radius * 2, radius * 2);
 
     btnTest.display();
   }
