@@ -19,6 +19,8 @@ class States {
    */
   void next() {
     if (state instanceof Idle) {
+      mp.calibrate(mp.RIGHT);
+      mp.calibrate(mp.LEFT);
       state = new Game(width, height, duration, Game.EASY);
     } else if (state instanceof Game) {
       switch (((Game)state).getDifficulty()) {

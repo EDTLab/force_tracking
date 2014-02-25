@@ -25,12 +25,15 @@ abstract class Active extends State {
   }
 
   float getInput() {
-    float input = mouseY;
-    if(active_x < input_data.length)
+    float input = mp.getValue(mp.RIGHT);
+    input = ceil(input * 100) / 100.0;
+    input = height - map(input, 0, 1.2, height * 0.1, height * 0.9);
+    if(active_x < input_data.length) {
       input_data[(int)active_x] = input;
+    }
     return input;
   }
-  
+
   void stepForward() {
     time_passed = seconds() - time_start;
     active_x = width * time_passed / duration;
@@ -38,7 +41,7 @@ abstract class Active extends State {
       states.next();
     }
   }
-  
+
   float seconds() {
     return millis() / 1000.0;
   }

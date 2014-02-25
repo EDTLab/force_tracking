@@ -11,10 +11,12 @@ class FTPhidget {
   final int RIGHT = 0;
   final int LEFT = 1;
   float[] v;
+  float[] offset;
   float min, max;
 
   FTPhidget() {
     v = new float[2];
+    offset = new float[2];
 
     try {
       b = new BridgePhidget();
@@ -43,8 +45,8 @@ class FTPhidget {
         b.setEnabled(i, false);
       b.setEnabled(LEFT, true);
       b.setEnabled(RIGHT, true);
-      b.setGain(LEFT, BridgePhidget.PHIDGET_BRIDGE_GAIN_128);
-      b.setGain(RIGHT, BridgePhidget.PHIDGET_BRIDGE_GAIN_128);
+      b.setGain(LEFT, BridgePhidget.PHIDGET_BRIDGE_GAIN_1);
+      b.setGain(RIGHT, BridgePhidget.PHIDGET_BRIDGE_GAIN_1);
       max = (float)b.getBridgeMax(RIGHT);
       min = (float)b.getBridgeMin(RIGHT);
 
@@ -55,14 +57,37 @@ class FTPhidget {
 
       bdl = new BridgeDataListener() {
         public void bridgeData(BridgeDataEvent bde) {
-          if(bde.getIndex() < 2)
-            v[bde.getIndex()] = (float)bde.getValue();
+          if(bde.getIndex() < 2) {
+            v[bde.getIndex()] = (float)bde.getValue() - offset[bde.getIndex()];
+          }
         }
       };
       b.addBridgeDataListener(bdl);
     } catch (Exception e) {
       println("ERROR");
       println(e);
+    }
+  }
+
+  float getValue(int side) {
+    switch(side) {
+      case RIGHT:
+        return v[RIGHT];
+      case LEFT:
+        return v[LEFT];
+      default:
+        return 0;
+    }
+  }
+
+  void calibrate(int side) {
+    switch (side) {
+      case RIGHT:
+        offset[RIGHT] = v[RIGHT];
+        break;
+      case LEFT:
+        offset[LEFT] = v[LEFT];
+        break;
     }
   }
 

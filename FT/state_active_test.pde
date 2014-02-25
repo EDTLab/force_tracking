@@ -12,10 +12,6 @@ public class Test extends Active {
 
   void update() {
     stepForward();
-
-    float input = mouseY;
-    if(active_x < input_data.length)
-      input_data[(int)active_x] = input;
   }
 
   void display() {
@@ -30,7 +26,7 @@ public class Test extends Active {
 
     // display the character
     fill(255, 0, 255);
-    ellipse(active_x, mouseY, 20, 20);
+    ellipse(active_x, getInput(), 20, 20);
   }
 
   void drawGrid(float interval) {
