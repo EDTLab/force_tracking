@@ -26,8 +26,8 @@ abstract class Active extends State {
 
   float getInput() {
     float input = mp.getValue(mp.RIGHT);
-    input = ceil(input * 100) / 100.0;
-    input = height - map(input, 0, 1.2, height * 0.1, height * 0.9);
+    input = ceil(input * 10000) / 10000.0;
+    input = height - map(input, 0, 0.5, height * 0.1, height * 0.9);
     if(active_x < input_data.length) {
       input_data[(int)active_x] = input;
     }

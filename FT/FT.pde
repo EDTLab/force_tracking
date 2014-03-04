@@ -16,7 +16,7 @@ AudioPlayer audio_coin;
  * override method: setup()
  */
 void setup() {
-//  size(displayWidth, displayHeight);
+  // size(displayWidth, displayHeight);
   size(800, 450);
 
   states = new States(width, height, duration);
@@ -36,6 +36,10 @@ void setup() {
  */
 void draw() {
   states.display();
+
+  textAlign(CENTER, CENTER);
+  textSize(height * 0.05);
+  text(frameRate, 50, height - 50);
 }
 
 /*

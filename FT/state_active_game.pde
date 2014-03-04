@@ -78,7 +78,7 @@ class Game extends Active {
 
     // display the character
     shapeMode(CENTER);
-    shape(fish, active_x, getInput(), radius * 2, radius * 2);
+    shape(fish, active_x, getInput(), radius * 3, radius * 3);
 
     btnTest.display();
   }

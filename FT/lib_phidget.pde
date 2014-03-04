@@ -45,8 +45,8 @@ class FTPhidget {
         b.setEnabled(i, false);
       b.setEnabled(LEFT, true);
       b.setEnabled(RIGHT, true);
-      b.setGain(LEFT, BridgePhidget.PHIDGET_BRIDGE_GAIN_1);
-      b.setGain(RIGHT, BridgePhidget.PHIDGET_BRIDGE_GAIN_1);
+      b.setGain(LEFT, BridgePhidget.PHIDGET_BRIDGE_GAIN_128);
+      b.setGain(RIGHT, BridgePhidget.PHIDGET_BRIDGE_GAIN_128);
       max = (float)b.getBridgeMax(RIGHT);
       min = (float)b.getBridgeMin(RIGHT);
 
